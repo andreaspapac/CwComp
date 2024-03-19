@@ -1,10 +1,18 @@
-from Datasets import *
 from torch.utils.data import DataLoader
-from utils import *
-import numpy as np
 from torch.autograd import Variable
-from Models import *
-import os
+from src.Extras import *
+
+''' This .py File contains extra code for the Older version that was not based on argparse commands.
+    This code doesn't utilise argparse therefore the choices in terms of Model, Architecture, Dataset,
+    Number of Epochs and Loss used are chosen manually by configuring the following setting variables:
+    Dataset       - dataset: {'MNIST/FMNIST/CIFAR'}
+    Model         - paper: {'AAAI', 'ESANN'} - Choose Between Model Presented in ESANN or AAAI
+    Architecture  - CFSE: {If CFSE==True, then -> CFSE Architecture, Else -> FFCNN Architecture}
+    Epochs        - n_epochs_d
+    Loss function - loss_criterion = {'CwC', 'CwC_CE', 'PvN', 'CWG'}
+    It uses the Extras.py file that contains Models ESANN and AAAI; The Conv_Old Class and the Old Datasets Classes. 
+    More information can be found in the Extras.py description.     
+    '''
 
 CUDA_LAUNCH_BLOCKING = 1.
 
@@ -20,37 +28,37 @@ def seed_everything(seed=42):
     np.random.seed(seed)
     random.seed(seed)
 
+data_rep = 'C:/Users/Andreas/Desktop/PhD/NeurIPS_Re/src/data/'
 sf_train_losses = []
 sf_test_losses = []
 gd_train_losses = []
 gd_test_losses = []
-
 layerwise_loss = []
+
 batch_size = 128
-
-n_repeats = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]  # int(round(60000/batch_size))+1
 show_iters = 200
-lr_decay = False
-
 ILT = 'Acc'
 dataset = 'CIFAR'  # MNIST/FMNIST/CIFAR
-seed = 52          # 52/13/22/2
+seed = 52          # {52/13/22/2} - Random Seed
 
 n_epochs_d = 50
-model_id = 'ESANN_CWG_' + dataset + ILT
+paper = 'AAAI'             # paper: {'AAAI', 'ESANN'} - Choose Between Model Presented in ESANN or AAAI
+CFSE = False               # If CFSE==True then -> CFSE Architecture, Else -> FFCNN Architecture
+loss_criterion = 'PvN'  # Loss function: {'CwC', 'CwC_CE', 'PvN', 'CWG'}
+
 
 if dataset == 'CIFAR':
-    train_data = CIFAR10('./data/', train=True, download=True)
-    test_data = CIFAR10('./data/', train=False, download=True)
+    train_data = CIFAR10(data_rep, train=True, download=True)
+    test_data = CIFAR10(data_rep, train=False, download=True)
     train_dataset = Hybrid_CIFAR10(train_data, number_samples=50000)
     test_dataset = Hybrid_CIFAR10_test(test_data, number_samples=10000)
 else:
     if dataset == 'MNIST':
-        train_data = MNIST('./data/', train=True, download=True)
-        test_data = MNIST('./data/', train=False, download=True)
+        train_data = MNIST(data_rep, train=True, download=True)
+        test_data = MNIST(data_rep, train=False, download=True)
     elif dataset == 'FMNIST':
-        train_data = FashionMNIST('./data/', train=True, download=True)
-        test_data = FashionMNIST('./data/', train=False, download=True)
+        train_data = FashionMNIST(data_rep, train=True, download=True)
+        test_data = FashionMNIST(data_rep, train=False, download=True)
     train_dataset = HybridImages_Train(train_data, number_samples=60000, dataset=dataset)
     test_dataset = HybridImages_Test(test_data, number_samples=10000, dataset=dataset)
 
@@ -65,13 +73,26 @@ if __name__ == "__main__":
     test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
                                               batch_size=5000, shuffle=False)
 
-    # model = CFSE_CwC_2B(batch_size=batch_size, n_repeats=n_repeats, dataset=dataset, ILT=ILT)
-    # model = FFCNN_PvN_4L(batch_size=batch_size, n_repeats=n_repeats, dataset=dataset, ILT=ILT)
-    model = ESANN_CWG(batch_size=batch_size, n_repeats=n_repeats, dataset=dataset, ILT=ILT)
+    if paper == 'AAAI':
+        if CFSE:
+            arch = 'CFSE_'
+        else:
+            arch = 'FFCNN_'
+
+        model_id = 'AAAI_' + arch + loss_criterion + '_' + dataset + '_' + ILT
+        model = AAAI(batch_size=batch_size, dataset=dataset, ILT=ILT,
+                     loss_criterion=loss_criterion, CFSE=CFSE)
+
+    elif paper == 'ESANN':
+        model_id = 'ESANN_' + dataset + '_' + ILT
+        model = ESANN(batch_size=batch_size, dataset=dataset, ILT=ILT)
+
+
     print(model)
+    print(model_id)
 
     for ep in range(n_epochs_d):
-        epoch = ep * n_repeats[2]
+        epoch = ep
         sf_epoch_losses = []
         gd_epoch_losses = []
         ep_layer_l = []
