@@ -76,7 +76,7 @@ This project is licensed under the [MIT License](LICENSE.md).
 
 ### Citation
 If you use this work in your research, please cite:
-To be published in AAAI 2024, Arxiv Preprint:
+Presented in AAAI 2024, Arxiv Preprint:
 
 ```
 @misc{papachristodoulou2023convolutional,
@@ -86,6 +86,18 @@ To be published in AAAI 2024, Arxiv Preprint:
       eprint={2312.12668},
       archivePrefix={arXiv},
       primaryClass={cs.LG}
+}
+
+ESANN 2023 Proceedings:
+@misc{papachristodoulou_2024_10781728,
+  author       = {Papachristodoulou, Andreas and
+                  Kyrkou, Christos and
+                  Timotheou, Stelios and
+                  Theocharides, Theocharis},
+  title        = {{Introducing Convolutional Channel-wise Goodness in 
+                   Forward-Forward Learning}},
+  doi          = {10.14428/esann/2023.ES2023-121},
+  url          = {https://doi.org/10.14428/esann/2023.ES2023-121}
 }
 ```
 
