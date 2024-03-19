@@ -28,7 +28,7 @@ def seed_everything(seed=42):
     np.random.seed(seed)
     random.seed(seed)
 
-data_rep = 'C:/Users/Andreas/Desktop/PhD/NeurIPS_Re/src/data/'
+data_rep = './data/'
 sf_train_losses = []
 sf_test_losses = []
 gd_train_losses = []
