@@ -93,13 +93,19 @@ Presented in AAAI 2024, Arxiv Preprint:
 ESANN 2023 Proceedings:
 
 ```
-@misc{papachristodoulou_2024_10781728,
-  author={Papachristodoulou, Andreas and Kyrkou, Christos and Timotheou, Stelios and Theocharides, Theocharis},
-  title={{Introducing Convolutional Channel-wise Goodness in Forward-Forward Learning}},
-  year={2023}
-  doi={10.14428/esann/2023.ES2023-121},
-  url={https://doi.org/10.14428/esann/2023.ES2023-121}
+@inproceedings{papachristodoulou_2023_10781728,
+  author = {Papachristodoulou, Andreas and Kyrkou, Christos and Timotheou, Stelios and Theocharides, Theocharis},
+  title = {{Introducing Convolutional Channel-wise Goodness in Forward-Forward Learning}},
+  booktitle = {Proceedings of the European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning (ESANN)},
+  year = {2023},
+  publisher = {i6doc.com publ.},
+  address = {Bruges, Belgium},
+  doi = {10.14428/esann/2023.ES2023-121},
+  url = {https://doi.org/10.14428/esann/2023.ES2023-121},
+  isbn = {978-2-87587-088-9},
+  note = {ESANN 2023 proceedings, Bruges (Belgium) and online event, 4-6 October 2023. Available from http://www.i6doc.com/en/.}
 }
+
 ```
 
 ### Contact
