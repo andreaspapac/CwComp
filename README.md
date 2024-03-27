@@ -77,7 +77,7 @@ This project is licensed under the [MIT License](LICENSE.md).
 ### Citation
 If you use this work in your research, please cite:
 
-Presented in AAAI 2024, Arxiv Preprint:
+Proceedings of the AAAI Conference on Artificial Intelligence (AAAI 2024),:
 
 ```
 @article{Papachristodoulou_2024,
