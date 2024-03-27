@@ -80,13 +80,17 @@ If you use this work in your research, please cite:
 Presented in AAAI 2024, Arxiv Preprint:
 
 ```
-@misc{papachristodoulou2023convolutional,
-      title={Convolutional Channel-wise Competitive Learning for the Forward-Forward Algorithm}, 
-      author={Andreas Papachristodoulou and Christos Kyrkou and Stelios Timotheou and Theocharis Theocharides},
-      year={2023},
-      eprint={2312.12668},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@article{Papachristodoulou_2024,
+  title={Convolutional Channel-Wise Competitive Learning for the Forward-Forward Algorithm},
+  volume={38},
+  url={https://ojs.aaai.org/index.php/AAAI/article/view/29369},
+  DOI={10.1609/aaai.v38i13.29369},
+  number={13},
+  journal={Proceedings of the AAAI Conference on Artificial Intelligence},
+  author={Papachristodoulou, Andreas and Kyrkou, Christos and Timotheou, Stelios and Theocharides, Theocharis},
+  year={2024},
+  month={Mar.},
+  pages={14536-14544}
 }
 ```
 
