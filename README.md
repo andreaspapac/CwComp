@@ -1,4 +1,5 @@
 # CwComp - Supplementary Material Section
+This repository reproduces the experiments of this [AAAI 2024 paper](https://arxiv.org/abs/2312.12668), which has been accepted for both Oral and Poster Presentation as well as for the [ESANN 2023 paper](https://www.esann.org/sites/default/files/proceedings/2023/ES2023-121.pdf).
 ---
 
 ## Convolutional Channel-wise Competitive Learning for the Forward-Forward Algorithm - AAAI 2024
